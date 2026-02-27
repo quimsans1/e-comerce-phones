@@ -31,5 +31,3 @@ export const ProductCard = ({ product }: Props) => {
     </article>
   )
 }
-
-export default PhoneCard
