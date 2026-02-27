@@ -2,7 +2,7 @@ export type Product = {
   id: string
   name: string
   brand: string
-  price: number
+  basePrice: number
   imageUrl: string
   [key: string]: unknown
 }

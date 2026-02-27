@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logo from '../../assets/logo.svg'
 import './Header.scss'
 
 type HeaderProps = {
@@ -8,10 +9,10 @@ type HeaderProps = {
 export const Header = ({ cartCount = 0 }: HeaderProps) => {
   return (
     <header className="navbar" aria-label="Barra de navegación principal">
-      <div className="navbar-inner">
+      <div className="container navbar-inner">
         <div className="navbar-left">
           <Link to="/" aria-label="Ir al listado de teléfonos">
-            <span className="navbar-title">MBST</span>
+            <img src={logo} alt="MBST logo" className="navbar-title" />
           </Link>
         </div>
         <div className="navbar-right">
