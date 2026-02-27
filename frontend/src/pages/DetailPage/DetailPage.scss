@@ -1,0 +1,153 @@
+.detail-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-back-link {
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.detail-container {
+  width: min(100%, 77rem);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.detail-main {
+  display: grid;
+  grid-template-columns: minmax(18rem, 40%) minmax(0, 1fr);
+  gap: clamp(1rem, 2.5vw, 3rem);
+  align-items: start;
+}
+
+.detail-image-panel {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.detail-image {
+  width: 100%;
+  max-width: 420px;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  padding-left: 17.7rem;
+}
+
+.detail-brand {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.detail-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.detail-price {
+  margin: 0;
+  margin-top: -0.7rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.detail-selector-group-storage h2,
+.detail-selector-group-color h2 {
+  margin: 0 0 1rem 0rem;
+  font-size: 0.91rem;
+  font-weight: 300;
+}
+
+.detail-selector-group-storage {
+  margin-top: 2rem;
+}
+
+.detail-selector-group-color {
+  margin-top: 2em;
+}
+
+.detail-specs dl {
+  margin: 0;
+}
+
+.detail-spec-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.detail-spec-row dt {
+  color: #6b7280;
+  text-transform: capitalize;
+}
+
+.detail-spec-row dd {
+  margin: 0;
+}
+
+.detail-add-button {
+  border: none;
+  background: #000000;
+  color: #fff;
+  margin-top: 1.5rem;
+  padding: 1.3rem 1rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.detail-add-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.detail-similar {
+  margin-top: 1rem;
+}
+
+@media (max-width: 1300px) {
+  .detail-main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .detail-content {
+    padding-left: 0.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .detail-main {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .detail-content {
+    padding-left: 0;
+  }
+
+  .detail-image-panel {
+    min-height: 320px;
+  }
+
+  .detail-spec-row {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+}

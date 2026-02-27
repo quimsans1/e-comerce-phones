@@ -1,22 +1,19 @@
-import type { Product } from '../../services/productsService'
+import type { Product } from '../../types'
 import './ProductsGrid.scss'
 import { ProductCard } from '../ProductCard/ProductCard'
 
-type Props = {
+interface ProductsGridProps {
   products: Product[]
-  /** maximum number of items to render; undefined for no limit */
   maxItems?: number
 }
 
-export const ProductsGrid = ({ products, maxItems }: Props) => {
+export const ProductsGrid = ({ products, maxItems }: ProductsGridProps) => {
   const items = typeof maxItems === 'number' ? products.slice(0, maxItems) : products
   return (
     <div className="phones-grid" aria-label="Listado de teléfonos">
-      {items.map((phone) => (
-        <ProductCard key={phone.id} product={phone} />
+      {items.map((phone, index) => (
+        <ProductCard key={`${phone.id}-${index}`} product={phone} />
       ))}
     </div>
   )
 }
-
-export default ProductsGrid

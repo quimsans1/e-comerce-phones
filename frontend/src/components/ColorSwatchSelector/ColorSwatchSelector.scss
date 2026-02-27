@@ -1,0 +1,38 @@
+.color-swatch-selector-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.color-swatch-selector-swatch {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: outline-color 0.3s ease;
+  outline: 1px solid #b3b3b3;
+  outline-offset: 1px;
+}
+
+.color-swatch-selector-swatch:not(.is-selected):hover,
+.color-swatch-selector-swatch:not(.is-selected):focus-visible {
+  outline: 1px solid #000000;
+}
+
+.color-swatch-selector-swatch.is-selected {
+  outline: 1px solid #000000;
+  outline-offset: 1px;
+}
+
+.color-swatch-selector-name {
+  margin: 0.4rem 0 0;
+  margin-left: -0.15rem;
+  font-size: 0.75rem;
+  opacity: 1;
+  transition: opacity 90ms ease;
+}
+
+.color-swatch-selector-name.is-fading {
+  opacity: 0;
+}

@@ -1,8 +1,12 @@
 import type { ChangeEvent } from 'react'
 import { useEffect, useState } from 'react'
-import { Input } from '../components/Input/Input'
-import { ProductsGrid } from '../components/ProductsGrid/ProductsGrid'
-import { fetchProducts, type Product } from '../services/productsService'
+import { Input } from '../../components/Input/Input'
+import { ProductsGrid } from '../../components/ProductsGrid/ProductsGrid'
+import type { Product } from '../../types'
+import { getAll } from '../../services/productsService'
+import './ListPage.scss'
+
+const MAX_ITEMS = 20
 
 export const ListPage = () => {
   const [phones, setPhones] = useState<Product[]>([])
@@ -16,7 +20,7 @@ export const ListPage = () => {
       try {
         setLoading(true)
         setError(null)
-        const data = await fetchProducts(query)
+        const data = await getAll(query)
         if (!controller.signal.aborted) {
           setPhones(data)
         }
@@ -37,6 +41,8 @@ export const ListPage = () => {
     setSearch(event.target.value)
   }
 
+  const displayedResults = Math.min(phones.length, MAX_ITEMS)
+
   return (
     <section aria-labelledby="phones-heading" aria-describedby="phones-subtitle">
       <div className="search-bar-wrapper">
@@ -48,19 +54,22 @@ export const ListPage = () => {
             placeholder="Search for a smartphone..."
             onChange={handleChange}
             ariaLabel="Buscar teléfono"
-            marginTop="3rem"
+            marginTop="2.3rem"
           />
         </div>
-        <p className="search-count">{phones.length} Results</p>
+        <p className="search-count">
+          {displayedResults} RESULTS
+        </p>
       </div>
 
       {loading && <p>Cargando teléfonos...</p>}
       {error && !loading && <p role="alert">{error}</p>}
 
       {!loading && !error && (
-        <ProductsGrid products={phones} maxItems={20} />
+        <ProductsGrid products={phones} maxItems={MAX_ITEMS} />
       )}
     </section>
   )
 }
 
+export default ListPage

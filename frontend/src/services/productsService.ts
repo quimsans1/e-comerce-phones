@@ -1,18 +1,9 @@
-export type Product = {
-  id: string
-  name: string
-  brand: string
-  basePrice: number
-  imageUrl: string
-  [key: string]: unknown
-}
+import type { Product, ProductDetail } from '../types'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-const API_KEY =
-  import.meta.env.VITE_API_KEY ?? '87909682e6cd74208f41a6ef39fe4191'
+const API_KEY = import.meta.env.VITE_API_KEY ?? '87909682e6cd74208f41a6ef39fe4191'
 
 if (!API_BASE_URL) {
-  // eslint-disable-next-line no-console
   console.warn(
     'VITE_API_BASE_URL no está configurado. Configúralo en tu archivo .env para poder llamar a la API de productos.'
   )
@@ -40,7 +31,7 @@ const request = async <T>(path: string, init?: RequestInit): Promise<T> => {
   return (await response.json()) as T
 }
 
-export const fetchProducts = async (
+export const getAll = async (
   search?: string
 ): Promise<Product[]> => {
   const params = new URLSearchParams()
@@ -55,12 +46,12 @@ export const fetchProducts = async (
   return data
 }
 
-export const fetchProductById = async (id: string): Promise<Product> => {
+export const getById = async (id: string): Promise<ProductDetail> => {
   if (!id) {
     throw new Error('El id del producto es obligatorio')
   }
 
-  const data = await request<Product>(`/products/${encodeURIComponent(id)}`)
+  const data = await request<ProductDetail>(`/products/${encodeURIComponent(id)}`)
   return data
 }
 

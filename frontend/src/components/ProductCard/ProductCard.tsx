@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
-import type { Product } from '../../services/productsService'
+import type { Product } from '../../types'
 import './ProductCard.scss'
 
-type Props = {
+interface ProductCardProps {
   product: Product
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <article className="product-card">
       <Link to={`/phone/${product.id}`} className="product-card-link">

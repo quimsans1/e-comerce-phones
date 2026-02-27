@@ -1,0 +1,29 @@
+.options-selector {
+  width: 100%;
+}
+
+.options-selector button {
+  min-width: 6.5rem;
+}
+
+.options-selector__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.options-selector__button {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  padding: 1.5rem 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.options-selector__button.is-selected {
+  border-color: #000000;
+}

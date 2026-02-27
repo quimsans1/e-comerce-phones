@@ -3,17 +3,24 @@
   min-height: 100vh;
 }
 
-.app-shell {
-  min-height: 100vh;
+.app-background {
+  background-color: white;
+}
+
+.app-container {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 255, 255);
+  max-width: 90vw;
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .app-main {
   flex: 1;
   padding: 1rem;
-  max-width: 90vw;
+  //max-width: 90vw;
   margin: 0 auto;
   width: 100%;
 }

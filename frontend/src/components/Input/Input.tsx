@@ -1,7 +1,7 @@
 import type { ChangeEvent } from 'react'
 import './Input.scss'
 
-type InputProps = {
+interface InputProps {
   id?: string
   name?: string
   value: string
@@ -38,5 +38,3 @@ export const Input = ({
     />
   )
 }
-
-export default Input
