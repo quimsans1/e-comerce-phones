@@ -1,6 +1,29 @@
 .navbar {
-  padding: 0.75rem 1rem;
+  padding: 0.50rem 1rem 1.1rem;
   background-color: transparent;
+}
+
+.navbar--shopping-bag {
+  position: relative;
+}
+
+.navbar--shopping-bag::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100vw;
+  height: 1px;
+  background: var(--color-black-pure);
+  transform: translateX(-50%);
+}
+
+.navbar--shopping-bag .navbar-cart img {
+  display: none;
+}
+
+.navbar--shopping-bag .navbar-cart #cart-count {
+  display: none;
 }
 
 .navbar-inner {

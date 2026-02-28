@@ -20,7 +20,8 @@ export const ColorSwatchSelector = ({
       ? options[hoveredIndex]?.name
       : selectedIndex !== null
         ? options[selectedIndex]?.name
-        : options[0]?.name
+        : undefined
+  const showSelectedName = (selectedIndex !== null || hoveredIndex !== null) && Boolean(selectedName)
 
   return (
     <div className="color-swatch-selector">
@@ -40,9 +41,12 @@ export const ColorSwatchSelector = ({
           />
         ))}
       </div>
-      <p key={selectedName} className="color-swatch-selector-name">
-        {selectedName}
-      </p>
+      <span
+        className={`color-swatch-selector-name ${showSelectedName ? '' : 'is-placeholder'}`}
+        aria-hidden={!showSelectedName}
+      >
+        {showSelectedName ? selectedName : '\u00A0'}
+      </span>
     </div>
   )
 }

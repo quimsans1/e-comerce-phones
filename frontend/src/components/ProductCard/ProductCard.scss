@@ -34,7 +34,7 @@
 }
 .product-card:hover::before {
   transform: scaleY(1);
-  background-color: #000000; /* end black */
+  background-color: var(--color-black); /* end black */
   /* long slow easing while hover is active */
   transition: transform 1.7s cubic-bezier(0.2, 1.1, 0.1, 1),
   background-color 2s cubic-bezier(0.2, 1.1, 0.1, 1);
@@ -75,7 +75,7 @@
 .product-card-price {
   font-size: 0.75rem;
   font-weight: 400;
-  color: #111827;
+  color: var(--color-text-primary);
   margin: 0;
   text-transform: uppercase;
   transition: color 0.3s ease; /* color change on hover */
@@ -94,7 +94,7 @@
 .product-card:hover .product-card-brand,
 .product-card:hover .product-card-title,
 .product-card:hover .product-card-price {
-  color: #ffffff;
+  color: var(--color-white);
 }
 
 .product-card-info {

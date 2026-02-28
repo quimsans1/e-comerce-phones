@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import bagIcon from '../../assets/bag-icon.svg'
 import './Header.scss'
@@ -8,8 +8,14 @@ interface HeaderProps {
 }
 
 export const Header = ({ cartCount = 0 }: HeaderProps) => {
+  const location = useLocation()
+  const isShoppingBagPage = location.pathname === '/cart'
+
   return (
-    <header className="navbar" aria-label="Barra de navegación principal">
+    <header
+      className={`navbar ${isShoppingBagPage ? 'navbar--shopping-bag' : ''}`}
+      aria-label="Barra de navegación principal"
+    >
       <div className="navbar-inner">
         <div className="navbar-left">
           <Link to="/" aria-label="Ir al listado de teléfonos">

@@ -16,12 +16,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             alt={`${product.name} - ${product.brand}`}
             className="product-card-image"
             loading="lazy"
+            draggable={false}
           />
         </div>
         <div className="product-card-info">
           <div>
             <p className="product-card-brand">{product.brand}</p>
-            <h2 className="product-card-title">{product.name}</h2>
+            <p className="product-card-title">{product.name}</p>
           </div>
           <p className="product-card-price">
             {product.basePrice} EUR
