@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Button } from '../../components/Button/Button'
 import { useShoppingBag } from '../../context/useShoppingBag'
 import './ShoppingBagPage.scss'
 
@@ -7,14 +8,9 @@ export const ShoppingBagPage = () => {
 
   return (
     <section className="shopping-bag-page" aria-labelledby="shopping-bag-title">
-      <h1 id="shopping-bag-title" className="shopping-bag-title">SHOPPING BAG</h1>
+      <h1 id="shopping-bag-title" className="shopping-bag-title">CART ({items.length})</h1>
 
-      {items.length === 0 ? (
-        <div className="shopping-bag-empty">
-          <p>Your shopping bag is empty.</p>
-          <Link to="/">Go to products</Link>
-        </div>
-      ) : (
+      {items.length > 0 && (
         <div className="shopping-bag-list">
           {items.map((item) => (
             <article key={item.id} className="shopping-bag-item">
@@ -43,6 +39,14 @@ export const ShoppingBagPage = () => {
           ))}
         </div>
       )}
+
+      <div className="shopping-bag-actions" aria-label="shopping bag actions">
+        <Link to="/" className="shopping-bag-continue-link">
+          <Button type="white">CONTINUE SHOPPING</Button>
+        </Link>
+
+        <button type="button" className="shopping-bag-pay-btn" disabled={items.length === 0}>PAY</button>
+      </div>
     </section>
   )
 }
