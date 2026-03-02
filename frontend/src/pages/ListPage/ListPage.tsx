@@ -4,6 +4,7 @@ import { Input } from '../../components/Input/Input'
 import { ProductsGrid } from '../../components/ProductsGrid/ProductsGrid'
 import type { Product } from '../../types/Product'
 import { getAll } from '../../services/productsService'
+import { getErrorMessage } from '../../utils/getErrorMessage'
 import './ListPage.scss'
 
 const MAX_ITEMS = 20
@@ -15,26 +16,32 @@ export const ListPage = () => {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    const controller = new AbortController()
-    const loadPhones = async (query: string) => {
+    let isCurrentRequest = true
+
+    const loadPhones = async () => {
       try {
         setLoading(true)
         setError(null)
-        const data = await getAll(query)
-        if (!controller.signal.aborted) {
+        const data = await getAll(search)
+        if (isCurrentRequest) {
           setPhones(data)
         }
-      } catch (e) {
-        if (e instanceof DOMException && e.name === 'AbortError') return
-        setError('Ha ocurrido un error al cargar los teléfonos')
+      } catch (error) {
+        if (isCurrentRequest) {
+          setError(getErrorMessage(error, 'An error occurred while loading the products'))
+        }
       } finally {
-        setLoading(false)
+        if (isCurrentRequest) {
+          setLoading(false)
+        }
       }
     }
 
-    loadPhones(search)
+    loadPhones()
 
-    return () => controller.abort()
+    return () => {
+      isCurrentRequest = false
+    }
   }, [search])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

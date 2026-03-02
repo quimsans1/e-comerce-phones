@@ -9,12 +9,12 @@ import { BackIcon } from '../../components/BackIcon/BackIcon'
 import { useShoppingBag } from '../../context/useShoppingBag'
 import type { ProductDetail } from '../../types/ProductDetail'
 import { getById } from '../../services/productsService'
+import { getErrorMessage } from '../../utils/getErrorMessage'
 import './DetailPage.scss'
 
 export const DetailPage = () => {
   const { id } = useParams<{ id: string }>()
   const [product, setProduct] = useState<ProductDetail | null>(null)
-  const [similarProducts, setSimilarProducts] = useState<ProductDetail['similarProducts']>([])
   const [selectedColorIndex, setSelectedColorIndex] = useState<number | null>(null)
   const [selectedStorageIndex, setSelectedStorageIndex] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
@@ -22,8 +22,6 @@ export const DetailPage = () => {
   const { addItem } = useShoppingBag()
 
   useEffect(() => {
-    const controller = new AbortController()
-
     const loadData = async () => {
       if (!id) return
       try {
@@ -31,26 +29,17 @@ export const DetailPage = () => {
         setError(null)
 
         const detail = await getById(id)
-        if (controller.signal.aborted) return
-
         setProduct(detail)
         setSelectedColorIndex(null)
         setSelectedStorageIndex(null)
-        setSimilarProducts(detail.similarProducts)
-      } catch {
-        if (!controller.signal.aborted) {
-          setError('No se pudo cargar el detalle del producto')
-        }
+      } catch (error) {
+        setError(getErrorMessage(error, 'Failed to load product details'))
       } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false)
-        }
+        setLoading(false)
       }
     }
 
     loadData()
-
-    return () => controller.abort()
   }, [id])
 
   const selectedColor = selectedColorIndex !== null ? product?.colorOptions[selectedColorIndex] : undefined
@@ -72,6 +61,7 @@ export const DetailPage = () => {
     : undefined
   const displayPrice = selectedStoragePrice ?? lowestStoragePrice ?? product?.basePrice ?? 0
   const pricePrefix = selectedStorageIndex === null ? 'From ' : ''
+  const similarProducts = product?.similarProducts ?? []
   const specificationItems = [
     { label: 'BRAND', value: product?.brand },
     { label: 'NAME', value: product?.name },
@@ -168,9 +158,9 @@ export const DetailPage = () => {
           <h1 className="detail-similar-title">SIMILAR ITEMS</h1>
           {similarProducts.length > 0 ? (
             <SimilarProductsCarousel products={similarProducts} />
-          ) : hasSelectedColor ? (
+          ) : (
             <p>No similar products available.</p>
-          ) : null}
+          )}
         </div>
       </div>
     </section>

@@ -24,6 +24,7 @@ const getInitialItems = (): ShoppingBagItem[] => {
 
 export const ShoppingBagProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<ShoppingBagItem[]>(getInitialItems)
+  const totalPrice = items.reduce((sum, item) => sum + item.selectedStoragePrice, 0)
 
   const addItem: ShoppingBagContextValue['addItem'] = (item) => {
     const nextItem: ShoppingBagItem = {
@@ -57,11 +58,12 @@ export const ShoppingBagProvider = ({ children }: { children: ReactNode }) => {
     () => ({
       items,
       itemCount: items.length,
+      totalPrice,
       addItem,
       removeItem,
       clearBag,
     }),
-    [items],
+    [items, totalPrice],
   )
 
   return (

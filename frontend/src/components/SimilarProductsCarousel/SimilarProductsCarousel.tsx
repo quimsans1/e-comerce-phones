@@ -170,8 +170,8 @@ export const SimilarProductsCarousel = ({ products }: SimilarProductsCarouselPro
         aria-label="Carrusel de productos similares"
       >
         <div className="similar-products-carousel-track">
-          {products.map((product, index) => (
-            <div key={`${product.id}-${index}`} className="similar-products-carousel-item">
+          {products.map((product) => (
+            <div key={product.id} className="similar-products-carousel-item">
               <ProductCard product={product} />
             </div>
           ))}

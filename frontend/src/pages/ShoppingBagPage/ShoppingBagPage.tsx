@@ -4,8 +4,7 @@ import { useShoppingBag } from '../../context/useShoppingBag'
 import './ShoppingBagPage.scss'
 
 export const ShoppingBagPage = () => {
-  const { items, removeItem } = useShoppingBag()
-  const totalPrice = items.reduce((sum, item) => sum + item.selectedStoragePrice, 0)
+  const { items, removeItem, totalPrice } = useShoppingBag()
 
   return (
     <section className="shopping-bag-page" aria-labelledby="shopping-bag-title">

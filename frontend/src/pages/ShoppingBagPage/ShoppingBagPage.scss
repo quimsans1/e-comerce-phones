@@ -15,20 +15,6 @@
   font-weight: 300;
 }
 
-.shopping-bag-empty {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.shopping-bag-empty p {
-  margin: 0;
-}
-
-.shopping-bag-empty a {
-  text-decoration: underline;
-}
-
 .shopping-bag-list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -121,13 +107,6 @@
   font-size: 0.9rem;
   text-transform: uppercase;
   font-weight: 600;
-}
-
-.shopping-bag-pay-btn:disabled {
-  border-color: #f0f0f0;
-  background: #f0f0f0;
-  color: #cecece;
-  cursor: not-allowed;
 }
 
 @media (max-width: 1600px) {
