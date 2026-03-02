@@ -53,13 +53,13 @@ export const ListPage = () => {
             value={search}
             placeholder="Search for a smartphone..."
             onChange={handleChange}
-            ariaLabel="Buscar teléfono"
+            ariaLabel="Search for a smartphone"
             resultsIndicator={`${displayedResults} RESULTS`}
           />
         </div>
       </div>
 
-      {loading && <p>Cargando teléfonos...</p>}
+      {loading && <p>Loading...</p>}
       {error && !loading && <p role="alert">{error}</p>}
 
       {!loading && !error && (
