@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .similar-products-carousel {
   width: 100%;
 }
@@ -58,7 +60,7 @@
   transition: left 120ms linear;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $phone-max-width) {
   .similar-products-carousel-viewport {
     width: calc(100% + 12rem);
     margin-left: -6rem;

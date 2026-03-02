@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .shopping-bag-page {
   display: flex;
   flex-direction: column;
@@ -159,7 +161,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $tablet-max-width) {
   .shopping-bag-page {
     gap: 2rem;
   }
@@ -178,7 +180,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: $phone-max-width) {
   .shopping-bag-title {
     margin-top: 2rem;
     font-size: 1.25rem !important;

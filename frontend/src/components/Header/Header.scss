@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .navbar {
   position: fixed;
   top: 0;
@@ -69,7 +71,7 @@
   margin-left: 5px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $tablet-max-width) {
   .navbar--shopping-bag::after {
     background: transparent;
   }

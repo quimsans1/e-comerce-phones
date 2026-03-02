@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .options-selector {
   width: 100%;
 }
@@ -29,7 +31,7 @@
   border-color: var(--color-primary);
 }
 
-@media (max-width: 1024px) { // tablet
+@media (max-width: $tablet-max-width) { // tablet
   .options-selector__button {
     padding: 0.95rem 1.2rem;
     font-size: 0.78rem;

@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .detail-page {
   display: flex;
   flex-direction: column;
@@ -132,7 +134,7 @@
   text-transform: uppercase;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $tablet-max-width) {
   .detail-container {
     margin-top: 3rem;
   }
@@ -197,7 +199,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: $phone-max-width) {
   .detail-container {
     padding: 0;
   }

@@ -1,3 +1,5 @@
+@use './styles/breakpoints' as *;
+
 :root {
   --app-header-height: 4.75rem;
   --app-container-width: 90vw;
@@ -37,7 +39,7 @@
   font-size: 0.9rem;
 }
 
-@media (max-width: 1024px) { // tablet
+@media (max-width: $tablet-max-width) { // tablet
   .app-main h1 {
     font-size: 1.16rem;
   }
@@ -49,7 +51,7 @@
 }
 }
 
-@media (max-width: 767px) { // phone
+@media (max-width: $phone-max-width) { // phone
   .app-main h2 {
     font-size: 0.78rem;
   }

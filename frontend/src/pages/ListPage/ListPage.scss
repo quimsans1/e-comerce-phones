@@ -1,3 +1,5 @@
+@use '../../styles/breakpoints' as *;
+
 .list-page {
   padding-top: 11rem;
 }
@@ -32,7 +34,7 @@
   color: var(--color-primary);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: $tablet-max-width) {
   .search-bar-wrapper {
     width: var(--app-container-width);
   }
