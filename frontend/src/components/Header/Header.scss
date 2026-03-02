@@ -11,14 +11,14 @@
 }
 
 .navbar--shopping-bag {
-  position: relative;
+  padding-bottom: 1.3rem;
 }
 
 .navbar--shopping-bag::after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -17px;
+  bottom: 0;
   width: 100vw;
   height: 1px;
   background: var(--color-primary);

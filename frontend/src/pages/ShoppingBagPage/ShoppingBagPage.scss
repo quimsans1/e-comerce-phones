@@ -1,13 +1,14 @@
 .shopping-bag-page {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 5rem;
   min-height: 100vh;
+  padding-bottom: 8rem;
 }
 
 .shopping-bag-title {
   margin: 0;
-  margin-top: 0;
+  margin-top: 4rem;
   font-size: 1.45rem !important;
   font-weight: 300;
 }
@@ -80,12 +81,20 @@
 }
 
 .shopping-bag-actions {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: var(--app-container-width);
+  z-index: 900;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: auto;
-  margin-bottom: 3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0rem 0 1.25rem 0;
+  background: #fff;
 }
 
 .shopping-bag-continue-link {
@@ -150,6 +159,15 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .shopping-bag-page {
+    gap: 2rem;
+  }
+  .shopping-bag-title {
+    margin-top: 2rem;
+  }
+}
+
 @media (max-width: 860px) {
   .shopping-bag-btn {
     min-width: 14rem;
@@ -162,15 +180,20 @@
 
 @media (max-width: 767px) {
   .shopping-bag-title {
-    margin-top: -2rem;
+    margin-top: 2rem;
+    font-size: 1.25rem !important;
+  }
+  .shopping-bag-page {
+    gap: 1rem;
+    padding-bottom: 9rem;
   }
 
   .shopping-bag-actions {
-    position: relative;
+    position: fixed;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
-    padding-top: 2rem;
+    padding-top: 2.5rem;  
   }
 
   .shopping-bag-continue-link,
@@ -186,6 +209,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0.5rem;
   }
 
   .shopping-bag-btn {
