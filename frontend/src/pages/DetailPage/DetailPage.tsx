@@ -93,7 +93,7 @@ export const DetailPage = () => {
       productId: product.id,
       name: product.name,
       brand: product.brand,
-      imageUrl: selectedColor.imageUrl || product.imageUrl || '',
+      imageUrl: (selectedColor.imageUrl || product.imageUrl)!,
       selectedColorName: selectedColor.name,
       selectedColorHexCode: selectedColor.hexCode,
       selectedStorageCapacity: selectedStorage.capacity,
@@ -101,9 +101,9 @@ export const DetailPage = () => {
     })
   }
 
-  if (loading) return <p>Cargando detalle del producto...</p>
+  if (loading) return <p>Loading...</p>
   if (error) return <p role="alert">{error}</p>
-  if (!product) return <p>No se encontró el producto</p>
+  if (!product) return <p>Product not found</p>
 
   return (
     <section className="detail-page" aria-labelledby="detail-title">
@@ -144,11 +144,13 @@ export const DetailPage = () => {
 
             <div className="detail-selector-group-color">
               <h2>COLOR, PICK YOUR FAVOURITE.</h2>
-              <ColorSwatchSelector
-                options={product.colorOptions}
-                selectedIndex={selectedColorIndex}
-                onSelect={setSelectedColorIndex}
-              />
+              <div className="detail-selector-color-options">
+                <ColorSwatchSelector
+                  options={product.colorOptions}
+                  selectedIndex={selectedColorIndex}
+                  onSelect={setSelectedColorIndex}
+                />
+              </div>
             </div>
 
             <Button disabled={!canAddToCart} className="detail-add-btn" onClick={handleAddToBag}>
