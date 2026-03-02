@@ -5,6 +5,7 @@ import './ShoppingBagPage.scss'
 
 export const ShoppingBagPage = () => {
   const { items, removeItem } = useShoppingBag()
+  const totalPrice = items.reduce((sum, item) => sum + item.selectedStoragePrice, 0)
 
   return (
     <section className="shopping-bag-page" aria-labelledby="shopping-bag-title">
@@ -42,10 +43,16 @@ export const ShoppingBagPage = () => {
 
       <div className="shopping-bag-actions" aria-label="shopping bag actions">
         <Link to="/" className="shopping-bag-continue-link">
-          <Button type="white">CONTINUE SHOPPING</Button>
+          <Button className="shopping-bag-btn" type="white">CONTINUE SHOPPING</Button>
         </Link>
 
-        <button type="button" className="shopping-bag-pay-btn" disabled={items.length === 0}>PAY</button>
+        <div className="shopping-bag-checkout">
+          <span className="shopping-bag-total">
+            <span>TOTAL</span>
+            <span>{totalPrice} EUR</span>
+          </span>
+          <Button className="shopping-bag-btn" id="shopping-bag-pay-btn" disabled={items.length === 0}>PAY</Button>
+        </div>
       </div>
     </section>
   )
