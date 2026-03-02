@@ -31,5 +31,3 @@ export const OptionsSelector = ({
     </div>
   )
 }
-
-export default OptionsSelector

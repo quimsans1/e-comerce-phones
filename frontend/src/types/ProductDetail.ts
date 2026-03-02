@@ -1,14 +1,6 @@
-import type { Product } from './product'
+import type { Product } from './Product'
 
-export interface OptionValue {
-  id: string
-  label: string
-  imageUrl?: string
-  hexCode?: string
-  price?: number
-}
-
-export interface ProductSpecs {
+interface ProductSpecs {
   screen: string
   resolution: string
   processor: string
@@ -19,13 +11,13 @@ export interface ProductSpecs {
   screenRefreshRate: string
 }
 
-export interface ProductColorOption {
+interface ProductColorOption {
   name: string
   hexCode: string
   imageUrl: string
 }
 
-export interface ProductStorageOption {
+interface ProductStorageOption {
   capacity: string
   price: number
 }

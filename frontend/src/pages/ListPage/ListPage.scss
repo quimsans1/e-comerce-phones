@@ -1,8 +1,22 @@
+.list-page {
+  padding-top: 11rem;
+}
+
 .search-bar-wrapper {
-  margin-bottom: 3rem;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--app-container-width);
+  z-index: 900;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 0 100vmax rgb(255, 255, 255);
+  clip-path: inset(0 -100vmax);
+  padding-top: 8rem;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  margin-bottom: 0;
 }
 
 .search-input-row {
@@ -12,7 +26,14 @@
   align-items: center;
 }
 
-.search-count {
+.search-bar-wrapper .search-count {
+  display: block;
   font-size: 0.78rem;
-  color: var(--color-black);
+  color: var(--color-primary);
+}
+
+@media (max-width: 1024px) {
+  .search-bar-wrapper {
+    width: var(--app-container-width);
+  }
 }

@@ -17,11 +17,11 @@
 
 .color-swatch-selector-swatch:not(.is-selected):hover,
 .color-swatch-selector-swatch:not(.is-selected):focus-visible {
-  outline: 1px solid var(--color-black);
+  outline: 1px solid var(--color-primary);
 }
 
 .color-swatch-selector-swatch.is-selected {
-  outline: 1px solid var(--color-black);
+  outline: 1px solid var(--color-primary);
   outline-offset: 1px;
 }
 

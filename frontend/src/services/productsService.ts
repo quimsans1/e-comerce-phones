@@ -1,4 +1,5 @@
-import type { Product, ProductDetail } from '../types'
+import type { ProductDetail } from '../types/ProductDetail'
+import type { Product } from '../types/Product'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 const API_KEY = import.meta.env.VITE_API_KEY ?? '87909682e6cd74208f41a6ef39fe4191'

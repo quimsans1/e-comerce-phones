@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import type { Product } from '../../types'
+import type { Product } from '../../types/Product'
 import { ProductCard } from '../ProductCard/ProductCard'
 import './SimilarProductsCarousel.scss'
 
@@ -190,5 +190,3 @@ export const SimilarProductsCarousel = ({ products }: SimilarProductsCarouselPro
     </div>
   )
 }
-
-export default SimilarProductsCarousel

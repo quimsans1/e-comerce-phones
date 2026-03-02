@@ -27,5 +27,3 @@ export const SpecificationsList = ({ items }: SpecificationsListProps) => {
     </>
   )
 }
-
-export default SpecificationsList

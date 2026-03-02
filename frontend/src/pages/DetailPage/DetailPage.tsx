@@ -5,8 +5,9 @@ import { OptionsSelector } from '../../components/OptionsSelector/OptionsSelecto
 import { Button } from '../../components/Button/Button'
 import { SpecificationsList } from '../../components/SpecificationsList/SpecificationsList'
 import { SimilarProductsCarousel } from '../../components/SimilarProductsCarousel/SimilarProductsCarousel'
+import { BackIcon } from '../../components/BackIcon/BackIcon'
 import { useShoppingBag } from '../../context/useShoppingBag'
-import type { ProductDetail } from '../../types'
+import type { ProductDetail } from '../../types/ProductDetail'
 import { getById } from '../../services/productsService'
 import './DetailPage.scss'
 
@@ -19,7 +20,6 @@ export const DetailPage = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const { addItem } = useShoppingBag()
-  const backText = "< BACK"
 
   useEffect(() => {
     const controller = new AbortController()
@@ -82,7 +82,7 @@ export const DetailPage = () => {
     { label: 'MAIN CAMERA', value: product?.specs.mainCamera },
     { label: 'SELFIE', value: product?.specs.selfieCamera },
     { label: 'BATTERY', value: product?.specs.battery },
-    { label: 'IS', value: product?.specs.os },
+    { label: 'OS', value: product?.specs.os },
     { label: 'SCREEN REFRESH RATE', value: product?.specs.screenRefreshRate },
   ]
 
@@ -108,7 +108,8 @@ export const DetailPage = () => {
   return (
     <section className="detail-page" aria-labelledby="detail-title">
       <Link to="/" className="detail-back-link">
-        {backText}
+        <BackIcon className="detail-back-icon" />
+        <span className="detail-back-text">BACK</span>
       </Link>
 
       <div className="detail-container">
@@ -125,10 +126,10 @@ export const DetailPage = () => {
             <h1 className="detail-name" id="detail-title">
               {product.name}
             </h1>
-            <p className="detail-price">{pricePrefix}{displayPrice} EUR</p>
+            <span className="detail-price">{pricePrefix}{displayPrice} EUR</span>
 
             <div className="detail-selector-group-storage">
-              <h2 id="title">
+              <h2>
                 STORAGE ¿HOW MUCH SPACE DO YOU NEED?
               </h2>
               <OptionsSelector
@@ -166,12 +167,10 @@ export const DetailPage = () => {
           {similarProducts.length > 0 ? (
             <SimilarProductsCarousel products={similarProducts} />
           ) : hasSelectedColor ? (
-            <p>No hay productos similares disponibles.</p>
+            <p>No similar products available.</p>
           ) : null}
         </div>
       </div>
     </section>
   )
 }
-
-export default DetailPage

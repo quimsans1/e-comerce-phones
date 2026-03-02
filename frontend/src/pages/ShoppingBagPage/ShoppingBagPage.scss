@@ -7,7 +7,7 @@
 
 .shopping-bag-title {
   margin: 0;
-  margin-top: 2.7rem;
+  margin-top: 0;
   font-size: 1.45rem !important;
   font-weight: 300;
 }
@@ -52,32 +52,20 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.45rem;
-  min-width: 0;
   flex: 1;
+  margin-left: 1.9rem;
 }
 
 .shopping-bag-item-name,
 .shopping-bag-item-config,
 .shopping-bag-item-price {
   margin: 0;
-}
-
-.shopping-bag-item-name {
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 0.78rem;
   text-transform: uppercase;
 }
 
-.shopping-bag-item-config {
-  font-size: 0.8rem;
-  color: #6b7280;
-}
-
 .shopping-bag-item-price {
-  font-size: 0.95rem;
-  font-weight: 400;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
 }
 
 .shopping-bag-remove-btn {
@@ -105,9 +93,9 @@
 }
 
 .shopping-bag-pay-btn {
-  border: 1px solid var(--color-black);
-  background: var(--color-black);
-  color: var(--color-white);
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: #ffffff;
   padding: 1.3rem 1rem;
   font-size: 0.75rem;
   cursor: pointer;
@@ -120,13 +108,13 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 1550px) {
+@media (max-width: 1600px) {
   .shopping-bag-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1120px) {
   .shopping-bag-list {
     grid-template-columns: 1fr;
   }
@@ -142,5 +130,31 @@
 
   .shopping-bag-actions {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .shopping-bag-title {
+    margin-top: -2rem;
+  }
+
+  .shopping-bag-item-image {
+    width: 130px;
+    height: 150px;
+  }
+
+  .shopping-bag-item {
+    display: flex;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 0rem;
+    min-height: 150px;
+    margin-top: 2rem;
+  }
+
+  .shopping-bag-item-content {
+    margin-left: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }

@@ -1,4 +1,4 @@
-import type { ChangeEvent } from 'react'
+import type { ChangeEvent, ReactNode } from 'react'
 import './Input.scss'
 
 interface InputProps {
@@ -11,6 +11,7 @@ interface InputProps {
   className?: string
   ariaLabel?: string
   marginTop?: string
+  resultsIndicator?: ReactNode
 }
 
 export const Input = ({
@@ -22,19 +23,25 @@ export const Input = ({
   type = 'text',
   className = '',
   ariaLabel,
-  marginTop
+  marginTop,
+  resultsIndicator
 }: InputProps) => {
   return (
-    <input
-      id={id}
-      name={name}
-      className={["input", className].filter(Boolean).join(' ')}
-      type={type}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-      aria-label={ariaLabel}
-      style={{ marginTop }}
-    />
+    <div className="input-wrapper">
+      <input
+        id={id}
+        name={name}
+        className={["input", className].filter(Boolean).join(' ')}
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+        aria-label={ariaLabel}
+        style={{ marginTop }}
+      />
+      {resultsIndicator && (
+        <span className="search-count">{resultsIndicator}</span>
+      )}
+    </div>
   )
 }

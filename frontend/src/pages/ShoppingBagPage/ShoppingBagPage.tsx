@@ -21,11 +21,11 @@ export const ShoppingBagPage = () => {
               />
 
               <div className="shopping-bag-item-content">
-                <h2 className="shopping-bag-item-name">{item.name}</h2>
-                <p className="shopping-bag-item-config">
+                <span className="shopping-bag-item-name">{item.name}</span>
+                <span className="shopping-bag-item-config">
                   {item.selectedStorageCapacity} | {item.selectedColorName}
-                </p>
-                <p className="shopping-bag-item-price">{item.selectedStoragePrice} EUR</p>
+                </span>
+                <span className="shopping-bag-item-price">{item.selectedStoragePrice} EUR</span>
 
                 <button
                   type="button"
@@ -50,5 +50,3 @@ export const ShoppingBagPage = () => {
     </section>
   )
 }
-
-export default ShoppingBagPage

@@ -34,7 +34,7 @@
 }
 .product-card:hover::before {
   transform: scaleY(1);
-  background-color: var(--color-black); /* end black */
+  background-color: var(--color-primary); /* end black */
   /* long slow easing while hover is active */
   transition: transform 1.7s cubic-bezier(0.2, 1.1, 0.1, 1),
   background-color 2s cubic-bezier(0.2, 1.1, 0.1, 1);
@@ -94,7 +94,7 @@
 .product-card:hover .product-card-brand,
 .product-card:hover .product-card-title,
 .product-card:hover .product-card-price {
-  color: var(--color-white);
+  color: white;
 }
 
 .product-card-info {

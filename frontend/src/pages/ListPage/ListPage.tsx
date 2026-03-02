@@ -2,7 +2,7 @@ import type { ChangeEvent } from 'react'
 import { useEffect, useState } from 'react'
 import { Input } from '../../components/Input/Input'
 import { ProductsGrid } from '../../components/ProductsGrid/ProductsGrid'
-import type { Product } from '../../types'
+import type { Product } from '../../types/Product'
 import { getAll } from '../../services/productsService'
 import './ListPage.scss'
 
@@ -44,7 +44,7 @@ export const ListPage = () => {
   const displayedResults = Math.min(phones.length, MAX_ITEMS)
 
   return (
-    <section aria-labelledby="phones-heading" aria-describedby="phones-subtitle">
+    <section className="list-page" aria-labelledby="phones-heading" aria-describedby="phones-subtitle">
       <div className="search-bar-wrapper">
         <div className="search-input-row">
           <Input
@@ -54,12 +54,9 @@ export const ListPage = () => {
             placeholder="Search for a smartphone..."
             onChange={handleChange}
             ariaLabel="Buscar teléfono"
-            marginTop="2.3rem"
+            resultsIndicator={`${displayedResults} RESULTS`}
           />
         </div>
-        <p className="search-count">
-          {displayedResults} RESULTS
-        </p>
       </div>
 
       {loading && <p>Cargando teléfonos...</p>}
@@ -71,5 +68,3 @@ export const ListPage = () => {
     </section>
   )
 }
-
-export default ListPage

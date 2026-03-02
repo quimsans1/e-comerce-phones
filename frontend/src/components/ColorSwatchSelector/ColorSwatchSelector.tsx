@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import type { ProductColorOption } from '../../types'
+import type { ProductDetail } from '../../types/ProductDetail'
 import './ColorSwatchSelector.scss'
+
+type ProductColorOption = ProductDetail['colorOptions'][number]
 
 interface ColorSwatchSelectorProps {
   options: ProductColorOption[]
@@ -50,5 +52,3 @@ export const ColorSwatchSelector = ({
     </div>
   )
 }
-
-export default ColorSwatchSelector
