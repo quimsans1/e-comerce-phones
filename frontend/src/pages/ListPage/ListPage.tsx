@@ -62,9 +62,11 @@ export const ListPage = () => {
       {loading && <p>Loading...</p>}
       {error && !loading && <p role="alert">{error}</p>}
 
-      {!loading && !error && (
-        <ProductsGrid products={phones} maxItems={MAX_ITEMS} />
-      )}
+      <div className="list-page-content">
+        {!loading && !error && (
+          <ProductsGrid products={phones} maxItems={MAX_ITEMS} />
+        )}
+      </div>
     </section>
   )
 }

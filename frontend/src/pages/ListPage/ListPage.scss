@@ -35,6 +35,10 @@
   color: var(--color-primary);
 }
 
+.list-page-content {
+  margin-bottom: 6rem;
+}
+
 @media (max-width: $tablet-max-width) {
   .search-bar-wrapper {
     width: var(--app-container-width);
