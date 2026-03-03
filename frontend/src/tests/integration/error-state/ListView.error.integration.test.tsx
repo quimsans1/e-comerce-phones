@@ -19,7 +19,6 @@ describe('Listing Page integration (error state)', () => {
     // Force the list API request to fail.
     vi.mocked(getAll).mockRejectedValue(new Error('network error'))
 
-    // Render page under router context because child components use links.
     render(
       <MemoryRouter
         future={{
