@@ -1,12 +1,15 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
-import {
-  ShoppingBagContext,
-  type ShoppingBagContextValue,
-  type ShoppingBagItem,
-} from './ShoppingBagContextInstance'
+import { v4 as uuidv4 } from 'uuid'
+import { ShoppingBagContext } from './ShoppingBagContextInstance'
+import type { ShoppingBagContextValue } from '../types/ShoppingBagContextValue'
+import type { ShoppingBagItem } from '../types/ShoppingBagItem'
 
 const SHOPPING_BAG_STORAGE_KEY = 'shopping-bag-items'
+
+const createItemId = (productId: string) => {
+  return `${productId}-${uuidv4()}`
+}
 
 const getInitialItems = (): ShoppingBagItem[] => {
   if (typeof window === 'undefined') return []
@@ -26,32 +29,24 @@ export const ShoppingBagProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<ShoppingBagItem[]>(getInitialItems)
   const totalPrice = items.reduce((sum, item) => sum + item.selectedStoragePrice, 0)
 
+  useEffect(() => {
+    window.localStorage.setItem(SHOPPING_BAG_STORAGE_KEY, JSON.stringify(items))
+  }, [items])
+
   const addItem: ShoppingBagContextValue['addItem'] = (item) => {
     const nextItem: ShoppingBagItem = {
       ...item,
-      id: `${item.productId}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      id: createItemId(item.productId),
     }
-
-    setItems((prev) => {
-      const next = [...prev, nextItem]
-      window.localStorage.setItem(SHOPPING_BAG_STORAGE_KEY, JSON.stringify(next))
-      return next
-    })
+    setItems((prev) => [...prev, nextItem])
   }
 
   const removeItem: ShoppingBagContextValue['removeItem'] = (itemId) => {
-    setItems((prev) => {
-      const next = prev.filter((item) => item.id !== itemId)
-      window.localStorage.setItem(SHOPPING_BAG_STORAGE_KEY, JSON.stringify(next))
-      return next
-    })
+    setItems((prev) => prev.filter((item) => item.id !== itemId))
   }
 
   const clearBag: ShoppingBagContextValue['clearBag'] = () => {
-    setItems(() => {
-      window.localStorage.setItem(SHOPPING_BAG_STORAGE_KEY, JSON.stringify([]))
-      return []
-    })
+    setItems([])
   }
 
   const value = useMemo<ShoppingBagContextValue>(
