@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { ColorSwatchSelector } from '../../components/ColorSwatchSelector/ColorSwatchSelector'
+import { ColorSelector } from '../../components/ColorSelector/ColorSelector'
 import { Link, useParams } from 'react-router-dom'
 import { OptionsSelector } from '../../components/OptionsSelector/OptionsSelector'
 import { Button } from '../../components/Button/Button'
 import { SpecificationsList } from '../../components/SpecificationsList/SpecificationsList'
-import { SimilarProductsCarousel } from '../../components/SimilarProductsCarousel/SimilarProductsCarousel'
+import { Carousel } from '../../components/Carousel/Carousel'
 import { BackIcon } from '../../components/BackIcon/BackIcon'
 import { useShoppingBag } from '../../context/useShoppingBag'
 import type { ProductDetail } from '../../types/ProductDetail'
@@ -31,6 +31,7 @@ export const DetailPage = () => {
 
         const detail = await getById(id)
         setProduct(detail)
+
         setSelectedColorIndex(null)
         setSelectedStorageIndex(null)
       } catch (error) {
@@ -136,7 +137,7 @@ export const DetailPage = () => {
             <div className="detail-selector-group-color">
               <h2>COLOR, PICK YOUR FAVOURITE.</h2>
               <div className="detail-selector-color-options">
-                <ColorSwatchSelector
+                <ColorSelector
                   options={product.colorOptions}
                   selectedIndex={selectedColorIndex}
                   onSelect={setSelectedColorIndex}
@@ -158,7 +159,7 @@ export const DetailPage = () => {
         <div className="detail-similar">
           <h2 className="detail-similar-title">SIMILAR ITEMS</h2>
           {similarProducts.length > 0 ? (
-            <SimilarProductsCarousel products={similarProducts} />
+            <Carousel products={similarProducts} />
           ) : (
             <p>No similar products available.</p>
           )}

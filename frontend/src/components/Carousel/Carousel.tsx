@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Product } from '../../types/Product'
 import { ProductCard } from '../ProductCard/ProductCard'
-import './SimilarProductsCarousel.scss'
+import './Carousel.scss'
 
-interface SimilarProductsCarouselProps {
+interface CarouselProps {
   products: Product[]
 }
 
-export const SimilarProductsCarousel = ({ products }: SimilarProductsCarouselProps) => {
+export const Carousel = ({ products }: CarouselProps) => {
   const trackRef = useRef<HTMLDivElement | null>(null)
   const draggingRef = useRef(false)
   const movedRef = useRef(false)
