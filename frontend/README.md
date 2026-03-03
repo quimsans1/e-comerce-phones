@@ -2,6 +2,11 @@
 
 Aplicación web de catálogo de móviles desarrollada para la prueba técnica de Zara/Napptilus.
 
+## Despliegue de la aplicación
+```bash
+https://starlit-dasik-96e942.netlify.app/
+```
+
 ## Instalación y ejecución
 
 ### Instalación
