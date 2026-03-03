@@ -1,4 +1,4 @@
-# prueba tecnica Napptilus (Zara)
+# Prueba técnica Napptilus (Zara)
 
 Aplicación web de catálogo de móviles desarrollada para la prueba técnica de Zara/Napptilus.
 
