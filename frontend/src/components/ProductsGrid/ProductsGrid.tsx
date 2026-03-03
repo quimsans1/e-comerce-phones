@@ -11,8 +11,8 @@ export const ProductsGrid = ({ products, maxItems }: ProductsGridProps) => {
   const items = typeof maxItems === 'number' ? products.slice(0, maxItems) : products
   return (
     <div className="phones-grid" aria-label="Listado de teléfonos">
-      {items.map((phone) => (
-        <ProductCard key={phone.id} product={phone} />
+      {items.map((phone, index) => (
+        <ProductCard key={`${phone.id}-${index}`} product={phone} />
       ))}
     </div>
   )

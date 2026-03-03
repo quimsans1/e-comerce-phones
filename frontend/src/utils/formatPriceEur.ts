@@ -1,0 +1,1 @@
+export const formatPriceEur = (value: number): string => `${value} EUR`

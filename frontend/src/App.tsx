@@ -11,7 +11,12 @@ const AppLayout = () => {
   const { itemCount } = useShoppingBag()
 
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <div className="app-background">
         <div className="app-container">
           <Header cartCount={itemCount} />

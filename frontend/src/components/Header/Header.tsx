@@ -27,7 +27,7 @@ export const Header = ({ cartCount = 0 }: HeaderProps) => {
             <img src={bagIcon} alt="shopping-bag" aria-hidden="true" />
             <span id="cart-count" aria-hidden="true">{cartCount}</span>
             <span className="visually-hidden">
-              {cartCount} productos en el carrito
+              {cartCount} products in the shopping bag
             </span>
           </Link>
         </div>

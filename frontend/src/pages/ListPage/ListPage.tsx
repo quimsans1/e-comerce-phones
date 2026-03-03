@@ -16,32 +16,20 @@ export const ListPage = () => {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    let isCurrentRequest = true
-
     const loadPhones = async () => {
       try {
         setLoading(true)
         setError(null)
         const data = await getAll(search)
-        if (isCurrentRequest) {
-          setPhones(data)
-        }
+        setPhones(data)
       } catch (error) {
-        if (isCurrentRequest) {
-          setError(getErrorMessage(error, 'An error occurred while loading the products'))
-        }
+        setError(getErrorMessage(error, 'An error occurred while loading the products'))
       } finally {
-        if (isCurrentRequest) {
-          setLoading(false)
-        }
+        setLoading(false)
       }
     }
 
     loadPhones()
-
-    return () => {
-      isCurrentRequest = false
-    }
   }, [search])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +39,8 @@ export const ListPage = () => {
   const displayedResults = Math.min(phones.length, MAX_ITEMS)
 
   return (
-    <section className="list-page" aria-labelledby="phones-heading" aria-describedby="phones-subtitle">
+    // Accessibility: label for screen-reader navigation
+    <section className="list-page" aria-label="Phones list">
       <div className="search-bar-wrapper">
         <div className="search-input-row">
           <Input
@@ -66,7 +55,8 @@ export const ListPage = () => {
         </div>
       </div>
 
-      {loading && <p>Loading...</p>}
+      {/* Accessibility: loading state as a status message and error as an alert for screen readers */}
+      {loading && <p role="status" aria-live="polite">Loading...</p>}
       {error && !loading && <p role="alert">{error}</p>}
 
       <div className="list-page-content">

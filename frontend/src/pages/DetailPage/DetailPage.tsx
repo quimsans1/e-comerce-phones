@@ -10,6 +10,7 @@ import { useShoppingBag } from '../../context/useShoppingBag'
 import type { ProductDetail } from '../../types/ProductDetail'
 import { getById } from '../../services/productsService'
 import { getErrorMessage } from '../../utils/getErrorMessage'
+import { formatPriceEur } from '../../utils/formatPriceEur'
 import './DetailPage.scss'
 
 export const DetailPage = () => {
@@ -43,8 +44,7 @@ export const DetailPage = () => {
   }, [id])
 
   const selectedColor = selectedColorIndex !== null ? product?.colorOptions[selectedColorIndex] : undefined
-  const selectedStorage =
-    selectedStorageIndex !== null ? product?.storageOptions[selectedStorageIndex] : undefined
+  const selectedStorage = selectedStorageIndex !== null ? product?.storageOptions[selectedStorageIndex] : undefined
   const hasSelectedColor = selectedColorIndex !== null
   const hasSelectedStorage = selectedStorageIndex !== null
   const imageUrl =
@@ -78,7 +78,6 @@ export const DetailPage = () => {
 
   const handleAddToBag = () => {
     if (!product || !selectedColor || !selectedStorage) return
-
     addItem({
       productId: product.id,
       name: product.name,
@@ -91,13 +90,15 @@ export const DetailPage = () => {
     })
   }
 
-  if (loading) return <p>Loading...</p>
+  // Accessibility: loading state as a status message and error as an alert for screen readers
+  if (loading) return <p role="status" aria-live="polite">Loading...</p>
   if (error) return <p role="alert">{error}</p>
   if (!product) return <p>Product not found</p>
 
   return (
     <section className="detail-page" aria-labelledby="detail-title">
-      <Link to="/" className="detail-back-link">
+      {/* Accessibility: descriptive link name to improve navigation */}
+      <Link to="/" className="detail-back-link" aria-label="Go back to products list">
         <BackIcon className="detail-back-icon" />
         <span className="detail-back-text">BACK</span>
       </Link>
@@ -116,7 +117,7 @@ export const DetailPage = () => {
             <h1 className="detail-name" id="detail-title">
               {product.name}
             </h1>
-            <span className="detail-price">{pricePrefix}{displayPrice} EUR</span>
+            <span className="detail-price">{pricePrefix}{formatPriceEur(displayPrice)}</span>
 
             <div className="detail-selector-group-storage">
               <h2>
@@ -150,12 +151,12 @@ export const DetailPage = () => {
         </div>
 
         <div className="detail-specifications">
-          <h1 className="detail-specifications-title">SPECIFICATIONS</h1>
+          <h2 className="detail-specifications-title">SPECIFICATIONS</h2>
           <SpecificationsList items={specificationItems} />
         </div>
 
         <div className="detail-similar">
-          <h1 className="detail-similar-title">SIMILAR ITEMS</h1>
+          <h2 className="detail-similar-title">SIMILAR ITEMS</h2>
           {similarProducts.length > 0 ? (
             <SimilarProductsCarousel products={similarProducts} />
           ) : (
